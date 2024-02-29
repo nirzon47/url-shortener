@@ -26,7 +26,7 @@ app.get('/:ID', (req, res) => {
 
 	// Redirects to the URL if the ID is found
 	if (link) {
-		res.redirect(link.URL)
+		res.redirect(link)
 	} else {
 		res.status(404).send('Link not found')
 	}

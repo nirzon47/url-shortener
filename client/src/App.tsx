@@ -22,7 +22,7 @@ const App = () => {
 		const config = {
 			method: 'post',
 			maxBodyLength: Infinity,
-			url: 'http://localhost:6969/shortenURL',
+			url: 'https://url-shortener-izxd.onrender.com/shortenURL',
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -64,7 +64,10 @@ const App = () => {
 					</form>
 					<div className='h-4'>
 						{!loading && shortURL && (
-							<a href={shortURL} className='text-blue-300'>
+							<a
+								href={`https://url-shortener-izxd.onrender.com/${shortURL}`}
+								className='text-blue-300'
+							>
 								{shortURL}
 							</a>
 						)}
