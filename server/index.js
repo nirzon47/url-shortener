@@ -45,7 +45,6 @@ app.post('/shortenURL', (req, res) => {
 		res.status(400).send('Invalid URL')
 	}
 
-	console.log(URL)
 	// Generates an ID
 	let id = nanoid(5)
 
