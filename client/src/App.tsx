@@ -32,6 +32,8 @@ const App = () => {
 		try {
 			const response = await axios.request(config)
 			console.log(JSON.stringify(response.data))
+
+			setShortURL(response.data)
 		} catch (error) {
 			console.log(error)
 		}
