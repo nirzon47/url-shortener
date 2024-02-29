@@ -9,5 +9,6 @@ const accessLogStream = fs.createWriteStream('server.log', {
 const logger = Router()
 
 logger.use(morgan('combined', { stream: accessLogStream }))
+logger.use(morgan(':method | Endpoint - :url | :date[web] | :response-time ms'))
 
 export default logger
