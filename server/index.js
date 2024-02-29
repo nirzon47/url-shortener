@@ -3,6 +3,7 @@ import logger from './middlewares/logger.js'
 import { nanoid } from 'nanoid'
 import fs from 'fs'
 import cors from 'cors'
+import isURL from 'validator/lib/isURL.js'
 
 const PORT = process.env.PORT || 6969
 
@@ -33,16 +34,12 @@ app.get('/:ID', (req, res) => {
 })
 
 app.post('/shortenURL', (req, res) => {
-	const isURL = (URL) => {
-		try {
-			new URL(URL)
-			return true
-		} catch (err) {
-			return false
-		}
-	}
 	// Gets the URL from request body
 	const URL = req.body[0].URL
+
+	if (!isURL(URL)) {
+		res.status(400).send('Invalid URL')
+	}
 
 	if (!isURL(URL)) {
 		res.status(400).send('Invalid URL')
