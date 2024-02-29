@@ -69,12 +69,23 @@ const App = () => {
 					</form>
 					<div className='h-4'>
 						{!loading && shortURL && (
-							<a
-								href={`https://url-shortener-izxd.onrender.com/${shortURL}`}
-								className='text-blue-300'
-							>
-								{shortURL}
-							</a>
+							<div className='flex justify-between items-center'>
+								<a
+									href={`https://url-shortener-izxd.onrender.com/${shortURL}`}
+									className='text-blue-300'
+								>
+									{`url-shortener-izxd.onrender.com/${shortURL}`}
+								</a>
+								<Button
+									onClick={() =>
+										navigator.clipboard.writeText(
+											`https://url-shortener-izxd.onrender.com/${shortURL}`
+										)
+									}
+								>
+									Copy
+								</Button>
+							</div>
 						)}
 					</div>
 				</div>
