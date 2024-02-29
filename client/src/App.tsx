@@ -13,6 +13,11 @@ const App = () => {
 		e.preventDefault()
 		setLoading(true)
 
+		if (new URL(url).hostname === '') {
+			alert('Invalid URL')
+			return
+		}
+
 		const data = JSON.stringify([
 			{
 				URL: url,
