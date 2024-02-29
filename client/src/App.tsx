@@ -3,6 +3,7 @@ import { ThemeProvider } from './components/theme-provider'
 import { Button } from './components/ui/button'
 import { Input } from './components/ui/input'
 import axios from 'axios'
+import { Skeleton } from './components/ui/skeleton'
 
 const App = () => {
 	const [url, setURL] = useState<string>('')
@@ -53,9 +54,9 @@ const App = () => {
 
 	return (
 		<ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-			<div className='h-screen w-screen grid place-content-center font-mono text-white bg-slate-900'>
-				<div className='w-64 md:w-96 text-center'>
-					<h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-6'>
+			<div className='grid w-screen h-screen font-mono text-white place-content-center bg-slate-900'>
+				<div className='w-64 text-center md:w-96'>
+					<h1 className='mb-6 text-2xl font-bold md:text-3xl lg:text-4xl'>
 						URL Shortener
 					</h1>
 					<form className='grid mb-6' onSubmit={handleLinkSubmission}>
@@ -68,8 +69,14 @@ const App = () => {
 						<Button type='submit'>Get Short URL</Button>
 					</form>
 					<div className='h-4'>
+						{loading && (
+							<div className='flex items-center justify-between'>
+								<Skeleton className='w-3/5 h-4' />
+								<Skeleton className='w-1/5 h-4' />
+							</div>
+						)}
 						{!loading && shortURL && (
-							<div className='flex justify-between items-center'>
+							<div className='flex items-center justify-between'>
 								<a
 									href={`https://url-shortener-izxd.onrender.com/${shortURL}`}
 									className='text-blue-300'
